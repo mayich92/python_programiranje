@@ -1,103 +1,70 @@
-uvjet1 = 5 < 3
-uvjet2 = 'a' in 'rečenica'
+# kromatska_skala = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "H"]    # nastavlja se ciklički
+# kromatska_skala.extend(kromatska_skala)
 
-if uvjet1:
-    pass
-elif uvjet2:
-    pass
-else:
-    pass
+# '''
+# kromatska_skala = kromatska_skala * 2    # alternativa za .extend() sa samim sobom
+# print("Dostupni tonovi su: {}".format(kromatska_skala))
+# '''
+
+# # durski akord: 0,4,7
+# # molski akord: 0,3,7
+
+# # algoritam:
+# # korisnik unese početni ton
+# # ispis: Durski akord čine note: ...
+# # ispis: Molski akord čine note: ...
 
 
-# if uvjet1:
-#     print('Uvjet 1 je ispunjen')
-# elif uvjet2:
-#     print('Uvjet 2 je ispunjen')
+# pocetni = input("Unesite željeni početni ton: ")
+# blokirati_program = False
+# if not pocetni[0].isalpha():
+#     print('Unos je nevaljan!')
+#     blokirati_program = True
+# elif pocetni[0].islower():
+#     tip_akorda = 'mol'
 # else:
-#     print('Nijedan uvjet nije ispunjen')
+#     tip_akorda = 'dur'
 
-brojevi = []
-for broj in range(1, 30+1):
-    brojevi.append(broj)
+# if not blokirati_program:
+#     pocetni = pocetni.upper()
+#     indeks_pocetnog = kromatska_skala.index(pocetni)
+#     print(indeks_pocetnog)
+#     indeks_drugog_tona_dur = indeks_pocetnog+4
+#     indeks_drugog_tona_mol = indeks_pocetnog+3
+#     indeks_treceg_tona = indeks_pocetnog+7
+#     drugi_ton_dur = kromatska_skala[indeks_drugog_tona_dur]
+#     drugi_ton_mol = kromatska_skala[indeks_drugog_tona_mol]
+#     treci_ton = kromatska_skala[indeks_treceg_tona]
 
-brojevi_lc = [i for i in range(1, 31)]
-brojevi_range = list(range(1, 31))
-
-# print(brojevi)
-# print(brojevi_lc)
-# print(brojevi_range)
-# print(brojevi == brojevi_lc == brojevi_range)
-# print(5 < 10 < 20)
-# print(5 < 10 and 10 < 20)    # nepotrebno pisati, moguće ulančavanje
-
-# for broj in brojevi:
-#     if broj % 9 == 0:
-#         print(f"Broj {broj} je djeljiv s 9.")
-#     elif broj % 6 == 0:
-#         print(f"Broj {broj} je djeljiv s 6.")
-#     elif broj % 3 == 0:
-#         print(f"Broj {broj} je djeljiv s 3.")
+#     if tip_akorda == 'mol':
+#         print(f'Molski akord čine note {pocetni}, {drugi_ton_mol} i {treci_ton}')
 #     else:
-#         print(f"Broj {broj} nije djeljiv s 3, 6 ili 9.")
+#         print(f'Durski akord čine note {pocetni}, {drugi_ton_dur} i {treci_ton}')
 
-# for broj in brojevi:
-#     if broj % 9 == 0:
-#         print(f"Broj {broj} je djeljiv s 9.")
-#     if broj % 6 == 0:
-#         print(f"Broj {broj} je djeljiv s 6.")
-#     if broj % 3 == 0:
-#         print(f"Broj {broj} je djeljiv s 3.")
-#     else:
-#         print(f"Broj {broj} nije djeljiv s 3, 6 ili 9.")
 
-# for broj in brojevi:
-#     if broj % 3 == 0 and broj % 6 == 0 and broj % 9 == 0:
-#         print(f"Broj {broj} je djeljiv s 3, 6 i 9.")
+lorem_ipsum = '''
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Fusce at consequat libero. Pellentesque vitae laoreet urna, 
+nec aliquet augue. Morbi aliquet felis nulla, non pharetra metus feugiat non. 
+Mauris sed eleifend nunc. Duis sed semper ante. 
+Integer ac molestie elit, a volutpat nibh. 
+Phasellus sagittis non sem et semper. 
+Suspendisse tempor faucibus sagittis. 
+Morbi blandit dictum auctor. 
+Aenean faucibus at lorem et tincidunt.
+'''
 
-# brojevi = list(range(1, 1_000_000+1))
-# for broj in brojevi:
-#     if broj % 67 == 0 and broj % 78 == 0 and broj % 9 == 0:
-#         print(f"Broj {broj} je broj koji tražite")
+lorem_ipsum = lorem_ipsum.lower()
+lorem_ipsum_words = lorem_ipsum.split()
 
-# text = "Ovo je neka rečenica"
-# for word in text.split():
-#     if len(word) <= 5:
-#         print(word)
+lorem_ipsum_words = [word.strip('?.,!') for word in lorem_ipsum_words]
 
-# opisi = {
-#     'py': 'Python source kod',
-#     'docx': 'Microsoft Word dokument',
-#     'pdf': 'Portable Document Format'
-# }
+input_word = input("Unesite riječ: ")
+# word_occ = lorem_ipsum_words.count(input_word)
 
-# filename = input("Unesite ime datoteke: ")
-# filename = filename.lower()
-# parts = filename.split('.')
-# extension = parts[-1]
-
-# if extension == 'py':
-#     description = 'Python source kod'
-# elif extension == 'docx':
-#     description = 'Microsoft Word dokument'
-# elif extension == 'pdf':
-#     description = 'Portable Document Format'
-# else:
-#     description = "nepoznat tip datoteke"
-
-# # extension = filename.split('.')[-1]
-# # description = opisi.get(extension, "nepoznat tip datoteke")
-# print(f"Vaša datoteka ima ekstenziju .{extension} i to je {description}.")
-
-# text = input("Unesite riječ: ")
-# text = text.lower()
-# to_remove = ' .-_?!*,'
-# for c in to_remove:
-#     text = text.replace(c, '')
-# text_reversed = text[::-1]
-# if text == text_reversed:
-#     print(f"String {text} JE palindrom.")
-# else:
-#     print(f"String {text} NIJE palindrom")
-
-for i in range(1, 10**3):
-    print(i)
+word_occ = 0
+for word in lorem_ipsum_words:
+    print(word)
+    if word == input_word:
+        word_occ += 1
+print(f'Vaša riječ se pojavljuje {word_occ} puta.')
