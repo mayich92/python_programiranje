@@ -12,39 +12,58 @@
 # 2. korisnik je pogodio riječ (nema više donjih crta u riječ, sva slova su prikazana)
 
 
-
 import random
+def Hangman():
 
-print("Dobrodošli u igru Hangman!")
-lista_rijeci = ["stol", "kuća", "auto", "pas", "subota", "putovanje", "radijator"]
-# nasumicni_izbor = random.choice(lista_rijeci)
-nasumicni_izbor = "radijator"
-broj_pokusaja = 6
-maskirni_izbor = len(nasumicni_izbor) * "_"
-lista_unesenih_slova = []
+   # while True:
 
-while broj_pokusaja > 0:
-    print(f"Riječ: {maskirni_izbor}")
-    print(f"Preostalih pokušaja: {broj_pokusaja}")
-    uneseno_slovo = input("Unesite slovo po izboru: ")
-    lista_unesenih_slova.append(uneseno_slovo)
-    nova_lista = " ".join(lista_unesenih_slova)
-    print(f"Iskorištena slova: {nova_lista}")
-    ponavljanje_istog_slova_u_rijeci = nasumicni_izbor.count(uneseno_slovo)
-    index_slova = nasumicni_izbor.index(uneseno_slovo)
-    print(index_slova)
+        print("Dobrodošli u igru Hangman!")
+        lista_rijeci = ["stol", "kuća", "auto", "pas", "subota", "putovanje", "radijator"]
+        nasumicni_izbor = random.choice(lista_rijeci)
+        broj_pokusaja = 6
+        maskirni_izbor = len(nasumicni_izbor) * "_"
+        lista_unesenih_slova = []
 
+        while broj_pokusaja > 0 and nasumicni_izbor != maskirni_izbor:
+            print( "-" *100)
+            print(f"Riječ: {maskirni_izbor}")
+            print(f"Preostalih pokušaja: {broj_pokusaja}")
+            uneseno_slovo = input("Unesite slovo po izboru: ").lower()
+            lista_unesenih_slova.append(uneseno_slovo)
+            nova_lista = " ".join(lista_unesenih_slova)
+            print(f"Iskorištena slova: {nova_lista}")
+            ponavljanje_istog_slova_u_rijeci = nasumicni_izbor.count(uneseno_slovo)
 
-    if uneseno_slovo in nasumicni_izbor:
-        # maskirni_izbor.replace( "_" , uneseno_slovo)
-        print(f"To slovo se pojavljuje u riječi {ponavljanje_istog_slova_u_rijeci} puta.")
-        for slovo in nasumicni_izbor:
-            index_slova = nasumicni_izbor.index(uneseno_slovo)
-            # maskirni_izbor[index_slova]=uneseno_slovo
-            print(index_slova)
+            if uneseno_slovo in maskirni_izbor:
+                print("To slovo ste već iskoristili!")
+                broj_pokusaja -= 1
+            elif uneseno_slovo in nasumicni_izbor:
+                print(f"To slovo se pojavljuje u riječi {ponavljanje_istog_slova_u_rijeci} puta.")
+                for i in range(len(nasumicni_izbor)):
+                    if nasumicni_izbor[i] == uneseno_slovo:
+                        mask_list = list(maskirni_izbor)
+                        mask_list[i] = uneseno_slovo
+                        maskirni_izbor = "".join(mask_list)
+            else:
+                print("To slovo se ne pojavljuje u riječi.")
+                broj_pokusaja -= 1
+
+        if nasumicni_izbor == maskirni_izbor:
+            print(f"Pogodili ste riječ {maskirni_izbor}, bravo!")
+
+Hangman()
+
+while True:
+    izlaz = input("Želite li igrati još (DA/NE)?").upper()
+    if izlaz == "DA":
+        Hangman()
     else:
-        print("To slovo se ne pojavljuje u riječi.")
-        broj_pokusaja -= 1
+        print("Hvala na igranju!")
+        break
+
+
+
+
 
 
 
