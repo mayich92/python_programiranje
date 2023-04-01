@@ -15,7 +15,7 @@
 import random
 def Hangman():
 
-   # while True:
+
 
         print("Dobrodošli u igru Hangman!")
         lista_rijeci = ["stol", "kuća", "auto", "pas", "subota", "putovanje", "radijator"]
