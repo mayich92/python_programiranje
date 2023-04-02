@@ -73,7 +73,7 @@ def podizanje_novca_sa_racuna():
         print("Premašili ste Vaš dnevni limit.")
 
 
-
+print("GLAVNI IZBORNIK")
 print("1. Kreiranje racuna")
 print("2. Prikaz stanja racuna")
 print("3. Prikaz prometa po racunu")
