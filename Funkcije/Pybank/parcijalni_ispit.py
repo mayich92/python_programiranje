@@ -1,10 +1,8 @@
 import os
-
-racuni = {}
-
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+racuni = {}
 def kreiranje_racuna():
     print("Kreiranje računa tvrtke")
     naziv = input("Naziv tvrtke:")
@@ -36,49 +34,76 @@ def kreiranje_racuna():
         "promet": []
     }
     print(f"Račun uspješno kreiran.\nBroj računa: ", broj_racuna)
-kreiranje_racuna()
 
-def prikaz_stanja_racuna():
+def prikazi_stanje_racuna():
     print("Prikaz stanja računa")
     broj_racuna = input("Unesite broj računa: ")
     if broj_racuna in racuni:
         print("Trenutno stanje na računu: ", racuni[broj_racuna]["stanje"], racuni[broj_racuna]["valuta"])
     else:
-        print("Račun ne postoji")
-prikaz_stanja_racuna()
+        print("Račun ne postoji.")
 
 def prikaz_prometa_po_racunu():
     print("Prikaz prometa po računu")
     broj_racuna = input("Unesite broj računa: ")
     if broj_racuna in racuni:
         print("Promet po računu" , broj_racuna)
-        for transakcija in racuni[broj_racuna]["promet"]:
-            print(transakcija["datum"], "-", transakcija["opis"], "-", transakcija["iznos"],
-                  racuni[broj_racuna]["valuta"])
-        else:
-            print("Nema transakcija na ovom računu!")
-prikaz_prometa_po_racunu()
+    for transakcija in racuni[broj_racuna]["promet"]:
+        print(transakcija["datum"], "-", transakcija["opis"], "-", transakcija["iznos"],
+    racuni[broj_racuna]["valuta"])
+    else:
+        print("Nema transakcija na ovom računu!")
 
 def polog_novca_na_racun():
     broj_racuna = input("Unesite broj računa: ")
     if broj_racuna in racuni:
         iznos = float(input("Unesite iznos za polog: "))
         valuta = input("Valuta (EUR ili HRK): ")
-        print("Uspješno ste položili novce na Vaš račun!")
+    print("Uspješno ste položili novce na Vaš račun!")
 
-polog_novca_na_racun()
-
-def podizanje_novaca_sa_racuna():
+def podizanje_novca_sa_racuna():
     dnevni_limit_u_kunama = 5000
     dnevni_limit_u_eurima = 655
     broj_racuna = input("Unesite broj računa:")
     iznos = float(input("Unesite iznos za isplatu: "))
     valuta = input("Valuta (EUR ili HRK): ")
-    if broj_racuna in racuni and dnevni_limit_u_kunama <=5000 and dnevni_limit_u_eurima <=655 :
+    if broj_racuna in racuni and dnevni_limit_u_kunama <=5000 or dnevni_limit_u_eurima <=655 :
         print("Uspješno ste podignuli novce sa računa.")
-    elif broj_racuna in racuni and dnevni_limit_u_kunama <=5000 and dnevni_limit_u_eurima <=655 :
+    else:
         print("Premašili ste Vaš dnevni limit.")
-podizanje_novaca_sa_racuna()
+
+
+
+print("1. Kreiranje racuna")
+print("2. Prikaz stanja racuna")
+print("3. Prikaz prometa po racunu")
+print("4. Polog novca na racun")
+print("5. Podizanje novca s racuna")
+print("6. Izlaz")
+
+opcija = input("Odaberite opciju: ")
+
+if opcija == "1":
+    kreiranje_racuna()
+
+elif opcija == "2":
+ prikazi_stanje_racuna()
+
+elif opcija == "3":
+    prikaz_prometa_po_racunu()
+
+elif opcija == "4":
+    polog_novca_na_racun()
+
+elif opcija == "5":
+    podizanje_novca_sa_racuna()
+
+elif opcija == "6":
+    print("Doviđenja!")
+
+else:
+    print("Nepoznata opcija")
+
 
 
 
