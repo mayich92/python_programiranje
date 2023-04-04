@@ -6,8 +6,11 @@ racuni = {}
 def kreiranje_racuna():
     print("Kreiranje računa tvrtke")
     naziv = input("Naziv tvrtke: ")
-    ulica_i_broj = input("Ulica i poštanski broj: ")
+    ulica_i_broj = input("Ulica i kućni broj: ")
     postanski_broj = input("Poštanski broj: ")
+    while len(postanski_broj) !=5:
+        print("Pogrešan broj znakova za poštanski broj, pokušajte ponovno!")
+        postanski_broj = input("Poštanski broj: ")
     grad = input("Grad: ")
     oib = input("OIB: ")
     while len(oib) !=11:
