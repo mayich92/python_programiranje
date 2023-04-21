@@ -7,11 +7,6 @@ class Person:
     def display_person(self):
         print(f"Name: {self.name}    Age: {self.age}")
 
-lista_osoba1 = []
-osoba1 = ['Bojan', 15]
-osoba2 = ['Damir', 20]
-lista_osoba1.append(osoba1)
-lista_osoba1.append(osoba2)
 
 # print(*lista_osoba1, sep='\n')
 
