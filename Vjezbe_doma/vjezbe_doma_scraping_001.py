@@ -31,33 +31,33 @@ except AttributeError:
 
 #napredna inačica
 
-import requests
-from bs4 import BeautifulSoup
-
-url = 'https://www.vrijeme.net/'
-location = input('Unesite ime mjesta: ')
-params = {'lokacija': location}
-response = requests.get(url, params=params)
-
-soup = BeautifulSoup(response.content, 'html.parser')
-city = soup.find('div', class_='lokacija-info').h1.text.strip()
-condition = soup.find('div', class_='trenutno-info').span.text.strip()
-temp = soup.find('div', class_='trenutno-temperatura').span.text.strip()
-
-print(f'Mjesto: {city}')
-print(f'Trenutno vrijeme: {condition}')
-print(f'Trenutna temperatura: {temp}')
-
-forecast_days = []
-forecast_conditions = []
-forecast_temps = []
-
-forecast = soup.find_all('div', class_='prognoza-item')
-for day in forecast[:3]:
-    forecast_days.append(day.find('div', class_='prognoza-datum').text.strip())
-    forecast_conditions.append(day.find('div', class_='prognoza-stanje').text.strip())
-    forecast_temps.append(day.find('div', class_='prognoza-temperatura').text.strip())
-
-print('Prognoza za sljedeća 3 dana:')
-for i in range(3):
-    print(f'{forecast_days[i]} - {forecast_conditions[i]}, {forecast_temps[i]}')
+# import requests
+# from bs4 import BeautifulSoup
+#
+# url = 'https://www.vrijeme.net/'
+# location = input('Unesite ime mjesta: ')
+# params = {'lokacija': location}
+# response = requests.get(url, params=params)
+#
+# soup = BeautifulSoup(response.content, 'html.parser')
+# city = soup.find('div', class_='lokacija-info').h1.text.strip()
+# condition = soup.find('div', class_='trenutno-info').span.text.strip()
+# temp = soup.find('div', class_='trenutno-temperatura').span.text.strip()
+#
+# print(f'Mjesto: {city}')
+# print(f'Trenutno vrijeme: {condition}')
+# print(f'Trenutna temperatura: {temp}')
+#
+# forecast_days = []
+# forecast_conditions = []
+# forecast_temps = []
+#
+# forecast = soup.find_all('div', class_='prognoza-item')
+# for day in forecast[:3]:
+#     forecast_days.append(day.find('div', class_='prognoza-datum').text.strip())
+#     forecast_conditions.append(day.find('div', class_='prognoza-stanje').text.strip())
+#     forecast_temps.append(day.find('div', class_='prognoza-temperatura').text.strip())
+#
+# print('Prognoza za sljedeća 3 dana:')
+# for i in range(3):
+#     print(f'{forecast_days[i]} - {forecast_conditions[i]}, {forecast_temps[i]}')
