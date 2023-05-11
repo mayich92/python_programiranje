@@ -6,6 +6,7 @@ class SmartKey:
     def __init__(self, master):
         self.master = master
         master.title("Korisnicko sucelje")
+        master.geometry("800x600")
 
         #Super unsafe, I know
         self.admin_pin = '0000'
