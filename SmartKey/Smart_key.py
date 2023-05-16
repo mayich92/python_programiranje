@@ -16,14 +16,17 @@ class SmartKey:
         self.original_surname = None
         self.pin_frame = None
 
-        self.welcome_panel = tk.Frame(self.master)
-        self.welcome_panel.grid()
+        self.welcome_panel = tk.Frame(self.master, borderwidth=2, relief="solid")
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
+        self.welcome_panel.grid(row=0, column=0, sticky="new")
 
         # added buttons for saving, canceling, and deleting user data in the admin panel
         self.ring_button = tk.Button(self.welcome_panel, text="Pozvoniti", command=self.on_ring)
-        self.ring_button.grid(row=1, column=0)
+        self.ring_button.grid(row=1, column=0, padx=10, pady=10, sticky=tk.W)
+        tk.Label(self.welcome_panel, text='', width=10).grid(row=1, column=1)
         self.unlock_button = tk.Button(self.welcome_panel, text="Otključati", command=self.on_unlock)
-        self.unlock_button.grid(row=1, column=1)
+        self.unlock_button.grid(row=1, column=2, padx=10, pady=10, sticky=tk.E)
 
     def disable_frame(self, frame):
         for child in frame.winfo_children():
@@ -97,8 +100,7 @@ class SmartKey:
             self.ime_textbox.delete(0, 'end')  # clear Ime textbox before inserting new value
             self.ime_textbox.insert(0, name)  # populate Ime textbox with name from selected user in listbox
             self.prezime_textbox.delete(0, 'end')  # clear Prezime textbox before inserting new value
-            self.prezime_textbox.insert(0,
-                                        surname)  # populate Prezime textbox with surname from selected user in listbox
+            self.prezime_textbox.insert(0,surname)  # populate Prezime textbox with surname from selected user in listbox
             self.pin_textbox.delete(0, 'end')  # clear PIN textbox before inserting new value
             self.pin_textbox.insert(0, pin_value)  # populate PIN textbox with pin from selected user in listbox
             if active == 'Aktivan':
